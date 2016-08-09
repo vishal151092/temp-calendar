@@ -1,0 +1,52 @@
+var a= new Date(); 
+var b=new Date();
+var curr=a;
+var dateList=[];
+
+b.setFullYear(a.getFullYear()-1);
+//console.log(curr.getTime());
+
+Array.prototype.unique = function (){  
+    var r = new Array();  
+    o:for(var i = 0, n = this.length; i < n; i++){  
+        for(var x = 0, y = r.length; x < y; x++){  
+            if(r[x]==this[i]) continue o;}  
+        r[r.length] = this[i];}  
+    return r;  
+}
+
+
+while(b.getTime()<curr.getTime()){
+  curr.setTime(curr.getTime() - (7*24*3600000));
+// console.log(new Date(curr));
+  dateList.push(curr.getTime());
+} 
+
+  var d = new Date(dateList[0]);
+    first = d.getFullYear();
+
+    var s = new Date(dateList[dateList.length-1]);
+    second = s.getFullYear();
+    arr = Array();
+    arrMonth =Array();
+
+   for(i = second; i <=first ; i++) arr.push(i);
+console.log(arr);
+   tempArrM=Array();
+ for(var x=0;x<arr.length;x++){
+ 
+ for(var y=0;y<dateList.length;y++){
+		if(arr[x]==(new Date(dateList[y]).getFullYear())) {
+    //console.log("hii");
+      //console.log(new Date(dateList[y]).getMonth());
+      tempArrM.push(new Date(dateList[y]).getMonth());
+    }
+  
+   
+ }
+    tempArrM=tempArrM.unique();
+   arrMonth.push(tempArrM);
+   tempArrM=[];
+ 
+ }  
+   console.log(arrMonth);
